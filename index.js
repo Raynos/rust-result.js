@@ -33,7 +33,7 @@ function createOk(v) {
   }
 }
 
-function createError(err) {
+function createErr(err) {
   if (isObject(err) && ERROR_UUID in err) {
     return err.err
   } else if (isObject(err) && OK_UUID in err) {
@@ -47,9 +47,19 @@ function createError(err) {
   }
 }
 
+function isOk(v) {
+  return createOk(v) !== undefined
+}
+
+function isErr(err) {
+  return createErr(err) !== undefined
+}
+
 module.exports = {
+  isOk: isOk,
   Ok: createOk,
-  Err: createError
+  isErr: isErr,
+  Err: createErr
 }
 
 function fakeUUID(word) {
@@ -67,5 +77,5 @@ function isObject(o) {
 function isError(e) {
   return isObject(e) &&
       (Object.prototype.toString.call(e) === '[object Error]' ||
-        e instanceof Error)
+        /* istanbul ignore next */ e instanceof Error)
 }
