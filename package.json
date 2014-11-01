@@ -1,6 +1,6 @@
 {
   "name": "raynos-rust-result",
-  "version": "0.1.0-improvements",
+  "version": "0.1.0-improvements-raynos",
   "author": "Maciej Małecki <me@mmalecki.com>",
   "description": "Mimic Rust's `std::result`",
   "main": "index",
